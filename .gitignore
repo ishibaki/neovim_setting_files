@@ -1,0 +1,10 @@
+# ignore image files
+*.png
+*.jpg
+*.gif
+
+*.swp
+
+dein/*
+
+.netrwhist
