@@ -65,5 +65,5 @@ endif
 
 "End dein Scripts-------------------------
 
-colorscheme hybrid
+colorscheme iceberg
 syntax on
