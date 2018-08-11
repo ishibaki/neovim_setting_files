@@ -1,8 +1,8 @@
-"     _/            _/    _/                    _/                 
-"        _/_/_/        _/_/_/_/    _/      _/      _/_/_/  _/_/    
-"   _/  _/    _/  _/    _/        _/      _/  _/  _/    _/    _/   
-"  _/  _/    _/  _/    _/          _/  _/    _/  _/    _/    _/    
-" _/  _/    _/  _/      _/_/  _/    _/      _/  _/    _/    _/     
+"     _/            _/    _/                    _/
+"        _/_/_/        _/_/_/_/    _/      _/      _/_/_/  _/_/
+"   _/  _/    _/  _/    _/        _/      _/  _/  _/    _/    _/
+"  _/  _/    _/  _/    _/          _/  _/    _/  _/    _/    _/
+" _/  _/    _/  _/      _/_/  _/    _/      _/  _/    _/    _/
 
 runtime! neovim_settings/*.vim
 
@@ -29,10 +29,6 @@ if dein#load_state(s:dein_dir)
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
-
   " Required:
   call dein#end()
   call dein#save_state()
@@ -47,16 +43,16 @@ if dein#check_install()
   call dein#install()
 endif
 
-let s:dein_cache_dir = expand('~/.cache/dein') 
+let s:dein_cache_dir = expand('~/.cache/dein')
 let s:dein_config_home = $XDG_CONFIG_HOME . '/nvim'
 
 if dein#load_state(s:dein_cache_dir)
   call dein#begin(s:dein_cache_dir)
 
-  let s:toml = s:dein_config_home . '/dein.toml'
+  let s:toml_common = s:dein_config_home . '/dein.toml'
   let s:toml_lazy = s:dein_config_home . '/dein_lazy.toml'
 
-  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_common, {'lazy': 0})
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
 
   call dein#end()
@@ -65,5 +61,5 @@ endif
 
 "End dein Scripts-------------------------
 
-colorscheme iceberg
 syntax on
+colorscheme iceberg
