@@ -5,6 +5,12 @@
 " _/  _/    _/  _/      _/_/  _/    _/      _/  _/    _/    _/
 
 runtime! neovim_settings/*.vim
+" ~/dotfiles/neovim_setting_files/neovim_settings/basic.vim
+" ~/dotfiles/neovim_setting_files/neovim_settings/color.vim
+" ~/dotfiles/neovim_setting_files/neovim_settings/keymap.vim
+" ~/dotfiles/neovim_setting_files/neovim_settings/plugins.vim
+" ~/dotfiles/neovim_setting_files/dein.toml
+" ~/dotfiles/neovim_setting_files/dein_lazy.toml
 
 "dein Scripts-----------------------------
 if &compatible
