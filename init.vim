@@ -27,6 +27,11 @@ if dein#load_state(s:dein_dir)
   call dein#add(s:dein_repo_dir)
 
   " Add or remove your plugins here:
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   " Required:
@@ -60,6 +65,6 @@ if dein#load_state(s:dein_cache_dir)
 endif
 
 "End dein Scripts-------------------------
-
+let g:deoplete#enable_at_startup = 1
 syntax on
 colorscheme iceberg
