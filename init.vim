@@ -40,6 +40,7 @@ if dein#load_state(s:dein_dir)
   endif
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('zchee/deoplete-jedi')
   " Required:
   call dein#end()
   call dein#save_state()
@@ -76,3 +77,7 @@ syntax on
 colorscheme iceberg
 
 set inccommand=nosplit
+
+let g:jedi#completions_enabled = 0
+let g:deoplete#sources#jedi#server_timeout=100
+let g:deoplete#sources#jedi#statement_length=100
