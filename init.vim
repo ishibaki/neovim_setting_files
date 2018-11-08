@@ -12,17 +12,20 @@ runtime! neovim_settings/*.vim
 " ~/dotfiles/neovim_setting_files/dein.toml
 " ~/dotfiles/neovim_setting_files/dein_lazy.toml
 
-"dein Scripts-----------------------------
-if &compatible
+" dein Scripts {{{ -----------------------------
+if &compatible " {{{
   set nocompatible               " Be iMproved
 endif
+" }}}
 
 " Required:
+" dein cache file setting {{{
 let s:dein_dir = expand('~/.config/nvim/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath+=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
+" }}}
 
 " Required:
 if dein#load_state(s:dein_dir)
@@ -32,7 +35,7 @@ if dein#load_state(s:dein_dir)
   " Required:
   call dein#add(s:dein_repo_dir)
 
-  " Add or remove your plugins here:
+  " Add or remove your plugins here: {{{
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -44,21 +47,23 @@ if dein#load_state(s:dein_dir)
   " Required:
   call dein#end()
   call dein#save_state()
+  " }}}
 endif
 
 " Required:
 filetype plugin indent on
 syntax enable
 
-" If you want to install not installed plugins on startup.
+" If you want to install not installed plugins on startup {{{
 if dein#check_install()
   call dein#install()
 endif
+" }}}
 
 let s:dein_cache_dir = expand('~/.cache/dein')
 let s:dein_config_home = $XDG_CONFIG_HOME . '/nvim'
 
-if dein#load_state(s:dein_cache_dir)
+if dein#load_state(s:dein_cache_dir) " {{{
   call dein#begin(s:dein_cache_dir)
 
   let s:toml_common = s:dein_config_home . '/dein.toml'
@@ -69,9 +74,10 @@ if dein#load_state(s:dein_cache_dir)
 
   call dein#end()
   call dein#save_state()
-endif
+endif " }}}
 
-"End dein Scripts-------------------------
+" End dein Scripts }}} -------------------------
+
 let g:deoplete#enable_at_startup = 1
 syntax on
 colorscheme iceberg
@@ -81,3 +87,5 @@ set inccommand=nosplit
 let g:jedi#completions_enabled = 0
 let g:deoplete#sources#jedi#server_timeout=100
 let g:deoplete#sources#jedi#statement_length=100
+
+" vim: set foldmethod=marker :
