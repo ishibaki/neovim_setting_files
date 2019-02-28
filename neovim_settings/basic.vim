@@ -84,6 +84,12 @@ set wildmenu
 " ◯や■などの記号が崩れるのを防ぐ
 set ambiwidth=double
 
+" マルチバイト文字(日本語とか)行の連結には空白を挿入しない
+set formatoptions+=mMj
+
+" H, M, Lコマンドのオフセットを無しにする
+set scrolloff=0
+
 " -------------------CSVカラムのハイライト:Csvhl \d-------------------
 function! CSVH(x)
     execute 'match Keyword /^\([^,]*,\)\{'.a:x.'}\zs[^,]*/'
@@ -109,8 +115,8 @@ set shiftwidth=4
 " 拡張子によってタブ文字の字下げ数を調節
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.{html,css,rb,R,q} setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.{py,python,py3,python3,md,mdown,mkdn,markdown,c,h} setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.{html,css,rb,R,q,md,mdown,mkdn,markdown} setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.{py,python,py3,python3,c,h} setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 " -------------------検索系-------------------
@@ -148,15 +154,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 let mapleader = "\<Space>\<Space>"
 
 " filetypeをpythonにする
-command! Setpython set filetype=python
 command! Setpy set filetype=python
 
 " filetypeをmarkdownにする
-command! Setmarkdown set filetype=markdown
-command! Setmdown set filetype=markdown
 command! Setmd set filetype=markdown
 
 command! Datetime read !date '+\%Y/\%m/\%d \%H:\%M:\%S'
+command! Date read !date '+\%Y-\%m-\%d'
+command! Time read !date '+\%H:\%M:\%S'
 
 " ---------------- netrw settings ----------------
 let g:netrw_liststyle = 3
@@ -169,3 +174,9 @@ autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
 autocmd InsertEnter * set nocursorline
 autocmd InsertLeave * set cursorline
+
+" ファイルが大きいとき，ハイライトを無効にする
+augroup vimrc-highlight
+    autocmd!
+    autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
+augroup END
