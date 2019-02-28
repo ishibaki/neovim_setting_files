@@ -12,7 +12,7 @@ set fenc=utf-8
 set fileformats=unix,mac,dos
 
 " viminfoの場所を指定
-" set viminfo='2000,f1,<500,:1000,@500,/500,n$HOME/.vim/info/viminfo
+set viminfo='2000,f1,<500,:1000,@500,/500,n$XDG_CONFIG_HOME/nvim/info/viminfo
 
 " バックアップファイルを作らない
 " set nobackup

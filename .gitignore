@@ -11,3 +11,4 @@ dein/*
 neovim_settings/color.vim
 neovim_settings/keymap.vim
 neovim_settings/plugins.vim
+info
