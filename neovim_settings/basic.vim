@@ -90,6 +90,9 @@ set formatoptions+=mMj
 " H, M, Lコマンドのオフセットを無しにする
 set scrolloff=0
 
+" python設定
+let g:python3_host_prog = expand('/usr/local/bin/python3')
+
 " -------------------CSVカラムのハイライト:Csvhl \d-------------------
 function! CSVH(x)
     execute 'match Keyword /^\([^,]*,\)\{'.a:x.'}\zs[^,]*/'
@@ -106,7 +109,7 @@ set listchars=tab:»-,eol:↲,nbsp:%
 " Tab文字を半角スペースにする
 set expandtab
 
-" 行頭以外のTab文字の表示幅（スペースいくつ分）
+" 行頭以外のTab文字の表示幅(スペースいくつ分)
 set tabstop=4
 
 " 行頭でのTab文字の表示幅
@@ -135,6 +138,9 @@ set wrapscan
 " 検索語をハイライト表示
 set hlsearch
 
+" 波括弧マーカーでフォールディングする設定
+set foldmethod=marker
+
 "-------------------ビジュアル選択範囲で検索を可能にする-------------------
 "ビジュアルモードには適応されるが選択モードではノーマルモードでは適応されないようにキーをリマップ
 " xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -157,7 +163,21 @@ let mapleader = "\<Space>\<Space>"
 command! Setpy set filetype=python
 
 " filetypeをmarkdownにする
-command! Setmd set filetype=markdown
+function! Setmd()
+    set filetype=markdown
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+    set commentstring=<!--\ %s\ -->
+    if getline("$") !~ 'set foldmethod'
+        call append(line("$"), "<!-- vim: set foldmethod=marker : -->")
+    endif
+endfunction
+
+command! Setmd :call Setmd()
+
+" filetypeをRにする
+command! Setr set filetype=R
 
 command! Datetime read !date '+\%Y/\%m/\%d \%H:\%M:\%S'
 command! Date read !date '+\%Y-\%m-\%d'
@@ -179,4 +199,16 @@ autocmd InsertLeave * set cursorline
 augroup vimrc-highlight
     autocmd!
     autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
+augroup END
+
+" undo treeの設定
+if has('persistent_undo')
+    set undodir=.
+    set undofile
+endif
+
+" 最後にカーソルがあった位置から開く
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
 augroup END
