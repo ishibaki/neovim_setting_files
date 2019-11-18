@@ -91,7 +91,7 @@ set formatoptions+=mMj
 set scrolloff=0
 
 " python設定
-let g:python3_host_prog = expand('/usr/local/bin/python3')
+let g:python3_host_prog = expand('/bin/python3')
 
 " -------------------CSVカラムのハイライト:Csvhl \d-------------------
 function! CSVH(x)

@@ -13,3 +13,5 @@ neovim_settings/keymap.vim
 neovim_settings/plugins.vim
 info
 rplugin/python3/deoplete/sources/__pycache__/deoplete-citation.cpython-37.pyc
+
+*.un~
