@@ -338,6 +338,12 @@ Plug 'Shougo/unite-outline', {'for': ['markdown']} " {{{
 nnoremap <Leader>ol :<C-u>Unite -vertical outline<CR>
 " }}}
 
+Plug 'ncm2/float-preview.nvim', {'for': ['markdown', 'python', 'R']} " {{{
+let g:float_preview#docked = 1
+set completeopt-=preview
+set previewheight=25
+" }}}
+
 Plug 'rafaqz/citation.vim', {'for': ['markdown']} " {{{
 let g:citation_vim_bibtex_file="~/.pandoc/library.bib"
 let g:citation_vim_mode="bibtex"
