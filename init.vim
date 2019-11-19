@@ -331,7 +331,7 @@ let g:closetag_xhtml_filetypes = 'xhtml,jsx'
 " }}}
 
 Plug 'kannokanno/previm', {'for': ['markdown', 'txt']} " {{{
-" let g:previm_open_cmd = 'open -a Safari.app'
+let g:previm_open_cmd = 'google-chrome'
 let g:previm_enable_realtime = 1
 let g:previm_disable_default_css = 1
 let g:previm_custom_css_path = '~/.pandoc/github.css'
