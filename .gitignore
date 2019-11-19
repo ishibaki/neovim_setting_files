@@ -15,5 +15,8 @@ info
 rplugin/python3/deoplete/sources/__pycache__/deoplete-citation.cpython-37.pyc
 plugged/*
 autoload/*
+vim-plug/*
+node_modules/*
+package-lock.json
 
 *.un~

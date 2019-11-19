@@ -41,6 +41,18 @@ nnoremap <silent> [unite]m :<C-u>Unite -direction=topleft -vertical mark<CR>
 Plug 'cocopon/iceberg.vim' " {{{
 " }}}
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " {{{
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if &filetype == 'vim'
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+" }}}
+
 Plug 'itchyny/lightline.vim' " {{{
 function! g:Date()
     return strftime("%H:%M")
@@ -353,21 +365,6 @@ let g:deoplete#sources#biblatex#delimiter = ';'
 
 " ==================== PYTHON ==================== {{{
 
-Plug 'neoclide/coc.nvim', {'for': ['python', 'ipynb', 'R', 'c'],
-                         \ 'branch': 'release'}
-
-Plug 'deoplete-plugins/deoplete-jedi', {'for': ['python']} " {{{
-" }}}
-
-Plug 'davidhalter/jedi-vim', {'for': ['python']} " {{{
-let g:jedi#rename_command = "<Leader>R"
-let g:jedi#force_py_version = 3
-let g:jedi#completions_enabled = 0
-" }}}
-
-Plug 'bps/vim-textobj-python', {'for': ['python']} " {{{
-" }}}
-
 Plug 'julienr/vim-cellmode', {'for': ['python']} " {{{
 let g:cellmode_tmux_sessionname=''
 let g:cellmode_tmux_windowname=''
@@ -388,14 +385,6 @@ endfunction
 nnoremap <silent><Space>" :<C-u>call InsertCellSeparatorLine()<CR>
 " }}}
 
-Plug 'python-mode/python-mode', {'for': ['python']} " {{{
-let g:pymode_python = 'python3'
-let g:pymode_run = 0
-let g:pymode_run_bind = '<leader>_'
-let g:pymode_doc_bind = '<leader>K'
-let g:pymode_rope_completion = 0
-" }}}
-
 Plug 'szymonmaszke/vimpyter', {'for': ['ipynb']} " {{{
 nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
 nmap <silent><Leader>s :VimpyterStartJupyter<CR>
@@ -404,6 +393,26 @@ let g:vimpyter_view_directory = '$HOME/.vimpyter_views'
 xnoremap <silent> ic <Esc>?```{.python?+1<CR>V/```/-1<CR>
 xnoremap <silent> ac <Esc>?```{.python<CR>V/```<CR>
 " }}}
+
+" Plug 'deoplete-plugins/deoplete-jedi', {'for': ['python']} " {{{
+" " }}}
+
+" Plug 'davidhalter/jedi-vim', {'for': ['python']} " {{{
+" let g:jedi#rename_command = "<Leader>R"
+" let g:jedi#force_py_version = 3
+" let g:jedi#completions_enabled = 0
+" " }}}
+
+" Plug 'bps/vim-textobj-python', {'for': ['python']} " {{{
+" " }}}
+
+" Plug 'python-mode/python-mode', {'for': ['python']} " {{{
+" let g:pymode_python = 'python3'
+" let g:pymode_run = 0
+" let g:pymode_run_bind = '<leader>_'
+" let g:pymode_doc_bind = '<leader>K'
+" let g:pymode_rope_completion = 0
+" " }}}
 
 " }}}
 
@@ -419,18 +428,18 @@ let vimrplugin_objbr_place = "console, right"
 let vimrplugin_objbr_opendf = 0
 " }}}
 
-Plug 'ujihisa/neco-look', {'for': ['markdown', 'rst', 'tex', 'gitcommit', 'gitrebase']} " {{{
-if !exists('g:neocomplete#text_mode_filetypes')
-    let g:neocomplete#text_mode_filetypes = {}
-endif
-let g:neocomplete#text_mode_filetypes = {
-    \ 'rst': 1,
-    \ 'markdown': 1,
-    \ 'gitrebase': 1,
-    \ 'gitcommit': 1,
-    \ 'tex': 1,
-    \ }
-" }}}
+" Plug 'ujihisa/neco-look', {'for': ['markdown', 'rst', 'tex', 'gitcommit', 'gitrebase']} " {{{
+" if !exists('g:neocomplete#text_mode_filetypes')
+"     let g:neocomplete#text_mode_filetypes = {}
+" endif
+" let g:neocomplete#text_mode_filetypes = {
+"     \ 'rst': 1,
+"     \ 'markdown': 1,
+"     \ 'gitrebase': 1,
+"     \ 'gitcommit': 1,
+"     \ 'tex': 1,
+"     \ }
+" " }}}
 
 Plug 'cespare/vim-toml', {'for': ['toml']} " {{{
 " }}}
