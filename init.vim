@@ -51,6 +51,11 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
+set updatetime=300
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
 " }}}
 
 Plug 'itchyny/lightline.vim' " {{{
