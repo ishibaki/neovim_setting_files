@@ -1,0 +1,29 @@
+
+#  _____     ______     __     __   __
+# /\  __-.  /\  ___\   /\ \   /\ "-.\ \
+# \ \ \/\ \ \ \  __\   \ \ \  \ \ \-.  \
+#  \ \____-  \ \_____\  \ \_\  \ \_\\"\_\
+#   \/____/   \/_____/   \/_/   \/_/ \/_/
+
+[[plugins]] # plugin manager
+repo = 'Shougo/deoplete.nvim' # {{{
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+'''
+# }}}
+
+[[plugins]]
+repo = 'Shougo/denite.nvim' # {{{
+# }}}
+
+[[plugins]] # bibtex plugin
+repo = 'ishibaki/deoplete-biblatex' # {{{
+on_ft = ['markdown']
+hook_add = '''
+    let g:deoplete#sources#biblatex#bibfile = '~/bibliography.bib'
+    let g:deoplete#sources#biblatex#delimiter = ';'
+    " let g:deoplete#sources#biblatex#startpattern = '['
+    call deoplete#custom#source('biblatex', 'filetypes', ['markdown','html', 'rst'])
+'''
+# }}}
+

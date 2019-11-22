@@ -11,6 +11,7 @@ runtime! neovim_settings/*.vim
 " ~/dotfiles/neovim_setting_files/neovim_settings/plugins.vim
 " ~/dotfiles/neovim_setting_files/dein.toml
 " ~/dotfiles/neovim_setting_files/dein_lazy.toml
+" ~/dotfiles/neovim_setting_files/dein_nvim.toml
 
 " dein Scripts {{{ -----------------------------
 if &compatible " {{{
@@ -65,9 +66,11 @@ if dein#load_state(s:dein_cache_dir) " {{{
 
   let s:toml_common = s:dein_config_home . '/dein.toml'
   let s:toml_lazy = s:dein_config_home . '/dein_lazy.toml'
+  let s:toml_nvim = s:dein_config_home . '/dein_nvim.toml'
 
   call dein#load_toml(s:toml_common, {'lazy': 0})
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
+  call dein#load_toml(s:toml_nvim, {'lazy': 0})
 
   call dein#end()
   call dein#save_state()
@@ -82,8 +85,11 @@ colorscheme iceberg
 set inccommand=nosplit
 
 let g:jedi#completions_enabled = 0
-let g:deoplete#sources#jedi#server_timeout=100
-let g:deoplete#sources#jedi#statement_length=100
+" let g:deoplete#sources#jedi#server_timeout=100
+" let g:deoplete#sources#jedi#statement_length=100
+let g:deoplete#sources#jedi#python_path='/usr/local/bin/python3.6'
+call deoplete#custom#source('_', 'max_info_width', 0)
+call deoplete#custom#source('_', 'max_kind_width', 0)
 
 " submode settings {{{
 " タイムアウト設定をOFFに

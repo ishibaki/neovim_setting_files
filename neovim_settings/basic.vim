@@ -14,6 +14,9 @@ set fileformats=unix,mac,dos
 " viminfoの場所を指定
 set viminfo='2000,f1,<500,:1000,@500,/500,n$XDG_CONFIG_HOME/nvim/info/viminfo
 
+" シソーラスファイルの設定
+set thesaurus+=$HOME/dotfiles/thesaurus_file/mthesaur.txt
+
 " バックアップファイルを作らない
 " set nobackup
 
