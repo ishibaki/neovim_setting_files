@@ -6,6 +6,7 @@
 *.swp
 
 dein/*
+plugged/*
 
 .netrwhist
 neovim_settings/color.vim

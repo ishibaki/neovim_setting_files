@@ -1,0 +1,1 @@
+/Users/tishibashi/.vim/settings/vim-plug.vim
