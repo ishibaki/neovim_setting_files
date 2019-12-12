@@ -305,6 +305,11 @@ Plug 'mattn/excelview-vim' " {{{
 Plug 'idbrii/textobj-word-column.vim' " {{{
 " }}}
 
+Plug 'mrtazz/simplenote.vim' " {{{
+source ~/.simplenoterc
+let g:SimplenoteFiletype = 'markdown'
+" }}}
+
 " }}}
 
 " ==================== ON DEMAND LOADING ==================== {{{
